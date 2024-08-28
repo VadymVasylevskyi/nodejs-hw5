@@ -3,10 +3,11 @@ import fs from 'fs';
 
 const server = http.createServer((req, res) => {
     try {
+        throw new Error('Error server')
         console.log(res)
     }
     catch (err) {
-        fs.appendFile('./errors.log', 'utf-8', (err) => {
+        fs.appendFile('./errors.log', `Error: ${err.message}`, (err) => {
             if (err) {
                 console.log('Ошибка записи логов', err)
             }
